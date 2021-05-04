@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class='app'>
+        <h1 style="text-align: center;">API</h1>
+        <div><pre id='json'></pre></div>
+    </div>
+
+    <script src="/index.js"></script>
+    <script>
+        async function main() {
+            try {
+
+                const env = { url: `http://localhost:3000` };
+
+                const api = await window.api?.init({ env });
+
+                const res = await api.test();
+                console.log(res);
+                const jsonView = document.getElementById('json');
+                jsonView.innerText = JSON.stringify(res);
+                
+            } catch(e) {
+                console.error(e);
+            }
+        }
+        
+        main();
+
+    </script>
+</body>
+</html>
